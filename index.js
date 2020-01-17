@@ -5,7 +5,7 @@ const streamOptions = {seek: 0, volume: 0.8};
 
 bot.login('NjY3MDIxNTI0NDUyMjQ1NTA1.Xh8_0w.YFtOCcnv2SEgse8QQVBEMz86jJw');
 
-bot.on('message', message => {
+bot.on('msg', msg => {
 let responseObject = {
 
     "Telos" : "Telos é o cara",
@@ -18,56 +18,51 @@ let responseObject = {
     "Você joga frifas" : "Sai daí seu gemado no frifas",
 };
 
-if(responseObject[message.content]){
-    message.channel.send(responseObject[message.content]);
+if(responseObject[msg.content]){
+    msg.channel.send(responseObject[msg.content]);
 }
 
-if (message.content.startsWith("eu sou jogador de freefire?")){
+if (msg.content.startsWith("eu sou jogador de freefire?")){
     randomNumber = Math.floor(Math.random() * (6 - 1) + 1);
     if(randomNumber == 2){
-        message.reply("Não!");
+        msg.reply("Não!");
     }
     else{
-        message.reply("Sim!");
+        msg.reply("Sim!");
     }
 }
 });
-
-botInformation.on('message', message => {
-    if (message.autor.bot) {
+bot.on('message', msg => {
+    if (msg.autor) {
         return;
     }
 
-    if(message.content.indexOf("youtube") !== -1 && message.content.toLowerCase().startsWith("?play")){
-        let CompleteMessage = message.content.split(' ');
+    if(msg.content.indexOf("youtube") !== -1 && msg.content.toLowerCase().startsWith("?play")){
+        let Completemsg = msg.content.split(' ');
         
-        let youtubeLink = CompleteMessage[1];
+        let youtubeLink = Completemsg[1];
         
         
-        let VoiceChannel = message.guild.channels.find(channel => channel.id === '666840371090948097');
+        let VoiceChannel = msg.guild.channels.find(channel => channel.id === '666840371090948097');
     }
 
-            if (VoiceChannel == null) {
-                let responseObject = {".toca" : "Não foi encontrado nenhum canal"};
-            }
-
-                if(message.content.indexOf("youtube") !== -1 && message.content.toLowerCase().startsWith("?play")){
-                    let CompleteMessage = message.content.split(' ');
+                if(msg.content.indexOf("youtube") !== -1 && msg.content.toLowerCase().startsWith("?play")){
+                    let Completemsg = msg.content.split(' ');
                     
-                    let youtubeLink = CompleteMessage[1];
+                    let youtubeLink = Completemsg[1];
                 }
                     
-                    let VoiceChannel = message.guild.channels.find(channel => channel.id === '666807105193508875');
+                    let VoiceChannel = msg.guild.channels.find(channel => channel.id === '666807105193508875');
                     
-                    if(message.content.indexOf("youtube") !== -1 && message.content.toLowerCase().startsWith("?play")){
-                        let CompleteMessage = message.content.split(' ');
+                    if(msg.content.indexOf("youtube") !== -1 && msg.content.toLowerCase().startsWith("?play")){
+                        let Completemsg = msg.content.split(' ');
                         
-                        let youtubeLink = CompleteMessage[1];
+                        let youtubeLink = Completemsg[1];
                     }   
-                            if(message.content.indexOf("youtube") !== -1 && message.content.toLowerCase().startsWith("?play")){
-                                let CompleteMessage = message.content.split(' ');
+                            if(msg.content.indexOf("youtube") !== -1 && msg.content.toLowerCase().startsWith("?play")){
+                                let Completemsg = msg.content.split(' ');
                                 
-                                let youtubeLink = CompleteMessage[1];
+                                let youtubeLink = Completemsg[1];
                             }
                                     VoiceChannel.join()
                                     .then(connection => {
@@ -79,4 +74,4 @@ botInformation.on('message', message => {
                                             VoiceChannel.leave();
                                         });
                                     })
-});
+})
